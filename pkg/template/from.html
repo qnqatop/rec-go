@@ -1,0 +1,34 @@
+<!-- form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма абитуриента</title>
+</head>
+<body>
+<h1>Заполните форму абитуриента</h1>
+<form action="/recommendations" method="POST">
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="age">Возраст:</label>
+    <input type="number" id="age" name="age" required><br><br>
+
+    <label for="country">Страна:</label>
+    <input type="text" id="country" name="country" required><br><br>
+
+    <label for="city">Город:</label>
+    <input type="text" id="city" name="city" required><br><br>
+
+    <label>Интересующие программы:</label><br>
+    <input type="checkbox" name="programs" value="Computer Science"> Computer Science<br>
+    <input type="checkbox" name="programs" value="Engineering"> Engineering<br>
+    <input type="checkbox" name="programs" value="Law"> Law<br>
+    <input type="checkbox" name="programs" value="Medicine"> Medicine<br>
+    <input type="checkbox" name="programs" value="Mathematics"> Mathematics<br><br>
+
+    <input type="submit" value="Получить рекомендации">
+</form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+.
+├── cfg
+├── cmd
+│   └── rec-todo
+├── deployment
+├── docs
+│   └── rec-system-base.sql
+├── go.mod
+├── go.sum
+├── pkg
+│   ├── app
+│   ├── db
+│   ├── recomendation
+│   └── template
+├── pre-base.go
+├── project_structure.txt
+└── university_recommendation.db
+
+11 directories, 6 files

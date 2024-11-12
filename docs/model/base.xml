@@ -1,0 +1,74 @@
+<Package xmlns:xsi="" xmlns:xsd="">
+    <Name>base</Name>
+    <Entities>
+        <Entity Name="City" Namespace="base" Table="cities">
+            <Attributes>
+                <Attribute Name="ID" DBName="cityID" DBType="int4" GoType="int" PK="true" Nullable="Yes" Addable="true" Updatable="false" Min="0" Max="0"></Attribute>
+                <Attribute Name="Name" DBName="name" DBType="varchar" GoType="string" PK="false" Nullable="No" Addable="true" Updatable="true" Min="0" Max="250"></Attribute>
+            </Attributes>
+            <Searches>
+                <Search Name="IDs" AttrName="ID" SearchType="SEARCHTYPE_ARRAY"></Search>
+                <Search Name="NameILike" AttrName="Name" SearchType="SEARCHTYPE_ILIKE"></Search>
+            </Searches>
+        </Entity>
+        <Entity Name="Direction" Namespace="base" Table="directions">
+            <Attributes>
+                <Attribute Name="ID" DBName="directionID" DBType="int4" GoType="int" PK="true" Nullable="Yes" Addable="true" Updatable="false" Min="0" Max="0"></Attribute>
+                <Attribute Name="UniversityID" DBName="universityID" DBType="int4" GoType="int" PK="false" FK="Universyty" Nullable="No" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+                <Attribute Name="CityID" DBName="cityID" DBType="int4" GoType="int" PK="false" FK="City" Nullable="No" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+                <Attribute Name="Code" DBName="code" DBType="varchar" GoType="string" PK="false" Nullable="No" Addable="true" Updatable="true" Min="0" Max="255"></Attribute>
+                <Attribute Name="Name" DBName="name" DBType="varchar" GoType="string" PK="false" Nullable="No" Addable="true" Updatable="true" Min="0" Max="250"></Attribute>
+                <Attribute Name="Params" DBName="params" DBType="jsonb" GoType="*DirectionParams" PK="false" Nullable="Yes" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+                <Attribute Name="Cost" DBName="cost" DBType="int4" GoType="*int" PK="false" Nullable="Yes" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+            </Attributes>
+            <Searches>
+                <Search Name="IDs" AttrName="ID" SearchType="SEARCHTYPE_ARRAY"></Search>
+                <Search Name="CodeILike" AttrName="Code" SearchType="SEARCHTYPE_ILIKE"></Search>
+                <Search Name="NameILike" AttrName="Name" SearchType="SEARCHTYPE_ILIKE"></Search>
+            </Searches>
+        </Entity>
+        <Entity Name="DirectionsFeedback" Namespace="base" Table="directionsFeedbacks">
+            <Attributes>
+                <Attribute Name="UserID" DBName="userID" DBType="int4" GoType="int" PK="true" FK="User" Nullable="Yes" Addable="true" Updatable="false" Min="0" Max="0"></Attribute>
+                <Attribute Name="DirectionID" DBName="directionID" DBType="int4" GoType="int" PK="true" FK="Direction" Nullable="Yes" Addable="true" Updatable="false" Min="0" Max="0"></Attribute>
+                <Attribute Name="Rating" DBName="rating" DBType="float4" GoType="float32" PK="false" Nullable="No" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+            </Attributes>
+            <Searches>
+                <Search Name="UserIDs" AttrName="UserID" SearchType="SEARCHTYPE_ARRAY"></Search>
+                <Search Name="DirectionIDs" AttrName="DirectionID" SearchType="SEARCHTYPE_ARRAY"></Search>
+            </Searches>
+        </Entity>
+        <Entity Name="UniversityFeedback" Namespace="base" Table="universityFeedbacks">
+            <Attributes>
+                <Attribute Name="Rating" DBName="rating" DBType="int4" GoType="*int" PK="false" Nullable="Yes" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+                <Attribute Name="UserID" DBName="userID" DBType="int4" GoType="int" PK="false" FK="User" Nullable="No" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+                <Attribute Name="UniversityID" DBName="universityID" DBType="int4" GoType="int" PK="false" FK="Universyty" Nullable="No" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+            </Attributes>
+            <Searches></Searches>
+        </Entity>
+        <Entity Name="Universyty" Namespace="base" Table="universyties">
+            <Attributes>
+                <Attribute Name="ID" DBName="universityID" DBType="int4" GoType="int" PK="true" Nullable="Yes" Addable="true" Updatable="false" Min="0" Max="0"></Attribute>
+                <Attribute Name="Name" DBName="Name" DBType="varchar" GoType="string" PK="false" Nullable="No" Addable="true" Updatable="true" Min="0" Max="250"></Attribute>
+                <Attribute Name="CityID" DBName="cityID" DBType="int4" GoType="int" PK="false" FK="City" Nullable="No" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+            </Attributes>
+            <Searches>
+                <Search Name="IDs" AttrName="ID" SearchType="SEARCHTYPE_ARRAY"></Search>
+                <Search Name="NameILike" AttrName="Name" SearchType="SEARCHTYPE_ILIKE"></Search>
+            </Searches>
+        </Entity>
+        <Entity Name="User" Namespace="base" Table="users">
+            <Attributes>
+                <Attribute Name="ID" DBName="userID" DBType="int4" GoType="int" PK="true" Nullable="Yes" Addable="true" Updatable="false" Min="0" Max="0"></Attribute>
+                <Attribute Name="CityID" DBName="cityID" DBType="int4" GoType="int" PK="false" FK="City" Nullable="No" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+                <Attribute Name="UniversityID" DBName="universityID" DBType="int4" GoType="int" PK="false" FK="Universyty" Nullable="No" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+                <Attribute Name="Gender" DBName="gender" DBType="bool" GoType="*bool" PK="false" Nullable="Yes" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+                <Attribute Name="Age" DBName="age" DBType="int4" GoType="*int" PK="false" Nullable="Yes" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+                <Attribute Name="Params" DBName="params" DBType="jsonb" GoType="*UserParams" PK="false" Nullable="Yes" Addable="true" Updatable="true" Min="0" Max="0"></Attribute>
+            </Attributes>
+            <Searches>
+                <Search Name="IDs" AttrName="ID" SearchType="SEARCHTYPE_ARRAY"></Search>
+            </Searches>
+        </Entity>
+    </Entities>
+</Package>
